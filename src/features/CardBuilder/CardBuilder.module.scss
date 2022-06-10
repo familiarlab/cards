@@ -1,0 +1,14 @@
+@import '../../sass.config.scss';
+
+.CardBuilder {
+	img {
+		width: 100%;
+	}
+}
+
+.DropZone {
+  border: 5px solid cyan;
+	margin-bottom: 20px;
+	padding: 28px 15px;
+	text-align: center;
+}

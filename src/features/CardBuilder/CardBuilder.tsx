@@ -2,23 +2,28 @@ import React, { useCallback, useState } from 'react';
 import { useDropzone } from 'react-dropzone';
 import { createCanvas, loadImage } from 'canvas';
 
+import styles from './CardBuilder.module.scss';
+
 function generate_card() {
-  const canvas = createCanvas(500, 500);
+  const multiplier = 2;
+  const font_size = 30;
+
+  const canvas_height = 675;
+  const canvas_width = 1200;
+  const canvas = createCanvas(canvas_width, canvas_height);
   const ctx = canvas.getContext('2d');
 
   ctx.fillStyle = 'white';
-  ctx.fillRect(0, 0, 500, 500);
+  ctx.fillRect(0, 0, canvas_width * multiplier, canvas_height * multiplier);
   ctx.fillStyle = '#000000';
-  ctx.font = '30px GothicA1';
-  ctx.fillText('Lorem Ipsum', 10, 50);
+  ctx.font = `${font_size * multiplier}px GothicA1`;
+  ctx.fillText('Lorem Ipsum', 50 * multiplier, (50 + font_size) * multiplier);
 
   // ctx.drawImage(image, 212, 213, 95, 95);
   return canvas.toDataURL();
 }
 
 function CardBuilder() {
-  // const height = 2025;
-  // const width = 3600;
   const [paths, setPaths] = useState('');
 
   const onDrop = useCallback((acceptedFiles: any) => {
@@ -33,16 +38,21 @@ function CardBuilder() {
   }, [setPaths]);
 
   const {getRootProps, getInputProps, isDragActive} = useDropzone({onDrop});
+  const isReady = (paths.length > 0);
 
   return (
-    <div {...getRootProps()}>
-      <input {...getInputProps()} />
+    <div className={styles.CardBuilder}>
+      <div {...getRootProps()} className={styles.DropZone}>
+        <input {...getInputProps()} />
+        {
+          isDragActive ?
+            <span>Drag is lookin' good</span> :
+            <span>Drag Image or Tap Open</span>
+        }
+      </div>
       {
-        isDragActive ?
-          <p>Looking Good!</p> :
-          <p>Drag your PFP image here, or tap to open</p>
+        isReady ? <img src={paths} /> : <span />
       }
-      <img src={paths} />
     </div>
   )
 }
