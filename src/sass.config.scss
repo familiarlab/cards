@@ -1,0 +1,23 @@
+@use 'sass:math';
+
+$black: #000;
+$blue: #368CC6;
+$cyan: cyan;
+$green: #8AC14D;
+$grey_1: #111;
+$grey_2: #888;
+$grey_3: #C4C4C4;
+$orange: #E46D36;
+$red: #D5544B;
+$yellow: #E5BD26;
+$white: #F2F2F2;
+
+$background_color: $white;
+
+$padding: 22px;
+$padding_double: $padding * 2;
+$padding_half: math.div($padding, 2);
+
+$mobile_max: 675px;
+
+$font_family: 'Trebuchet Ms', 'Lucida Grande', 'Lucida Sans Unicode', 'Tahoma', 'sans-serif';
