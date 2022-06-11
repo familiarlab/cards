@@ -1,14 +1,35 @@
 @import '../../sass.config.scss';
 
-.CardBuilder {
-	img {
-		width: 100%;
-	}
+.DropZone {
+
+  align-items: center;
+  background: rgba(0, 255, 255, 0.07);
+  border: 5px dashed cyan;
+  border-radius: 2px;
+  display: flex;
+  height: 375px;
+  justify-content: center;
+  margin-bottom: 20px;
+  padding: 28px 15px;
+  text-align: center;
 }
 
-.DropZone {
-  border: 5px solid cyan;
-	margin-bottom: 20px;
-	padding: 28px 15px;
-	text-align: center;
+.CardBuilder {
+  & > img {
+    margin-bottom: 15px;
+    width: 100%;
+  }
+  // .rcp-dark {
+  //   --rcp-background: #181818;
+  //   --rcp-input-text: #f3f3f3;
+  //   --rcp-input-border: rgba(255, 255, 255, 0.1);
+  //   --rcp-input-label: #999999;
+  // }
+}
+
+.ColorButton {
+  border-radius: 3px;
+  cursor: pointer;
+  height: 35px;
+  width: 35px;
 }

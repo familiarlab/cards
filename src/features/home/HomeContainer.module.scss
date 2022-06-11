@@ -2,72 +2,72 @@
 // @import '../cards/Cards.scss';
 
 body {
-	background: $grey_1;
-	color: $white;
-	margin: 0;
-	padding: 0;
+  background: $grey_1;
+  color: $white;
+  margin: 0;
+  padding: 0;
 }
 
 // $highlight: #705885;
 $highlight: cyan;
 
 .HomeContainer {
-	// button, input {
-	// 	color: $grey_1;
-	// 	padding: 20px;
-	// }
+  // button, input {
+  //  color: $grey_1;
+  //  padding: 20px;
+  // }
 
-	// img {
-	// 	width: 100%
-	// }
+  // img {
+  //  width: 100%
+  // }
 
-	h1 {
-		background: $highlight;
-		bottom: 0;
-		color: $grey_1;
-		font-size: 14px;
-		left: 0;
-		padding: 7px 14.69px;
-		position: fixed;
+  h1 {
+    background: $highlight;
+    bottom: 0;
+    color: $grey_1;
+    font-size: 14px;
+    left: 0;
+    padding: 7px 14.69px;
+    position: fixed;
 
-		span {
-			font-weight: 400;
-		}
-		a {
-			color: $grey_1;
-			font-weight: 700;
-			margin-left: 3px;
-			text-decoration: none;
-		}
-	}
+    span {
+      font-weight: 400;
+    }
+    a {
+      color: $grey_1;
+      font-weight: 700;
+      margin-left: 3px;
+      text-decoration: none;
+    }
+  }
 
-	main {
-		padding: 20px;
-	}
+  main {
+    padding: 20px;
+  }
 
-	main > h2 {
-		color: $highlight;
-	}
+  main > h2 {
+    color: $highlight;
+  }
 
-	main > h3 {
-		font-size: 18px;
-	}
+  main > h3 {
+    font-size: 18px;
+  }
 
-	main > h4 {
+  main > h4 {
 
-	}
+  }
 
-	main > form {
-		margin: 0;
-		padding: 0;
-	}
+  main > form {
+    margin: 0;
+    padding: 0;
+  }
 
-	main > form > div:first-of-type {
-		border: 4px dotted $highlight;
-		img {
-			width: 300px;
-		}
-	}
+  main > form > div:first-of-type {
+    border: 4px dotted $highlight;
+    img {
+      width: 300px;
+    }
+  }
 }
 
 
