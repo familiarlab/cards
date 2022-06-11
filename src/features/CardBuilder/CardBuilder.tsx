@@ -10,6 +10,7 @@ import model from './model/1444-LOST-FOREVER-TWITTER.png';
 import GetColor from './GetColor';
 
 function generate_card(file: any, image: any) {
+  const filename = file.path.split('.')[0];
   const messages = [
     ['Adopt a lost boy,', 'Keep him forever'],
     // ['123456789123456789'], // 19
@@ -105,11 +106,11 @@ function generate_card(file: any, image: any) {
 
   ctx.drawImage(canvas_text, center_text_x, center_text_y, canvas_text_width, canvas_text_height);
 
-  ctx.font = `${55}px GothicA1Bold`;
+  ctx.font = `${font_size * 0.48}px GothicA1Bold`;
   ctx.fillStyle = highlight;
   ctx.translate(190, base_height - padding);
   ctx.rotate(270 * Math.PI / 180);
-  ctx.fillText('1444', 0, 0);
+  ctx.fillText(filename, 0, 0);
   ctx.restore();
 
   return canvas.toDataURL();
@@ -175,11 +176,14 @@ function CardBuilder() {
   const dropzone_style = {
     // border: `5px solid rgba(${rgb.r}, ${rgb.g}, ${rgb.b}, ${rgb.a}`
     background: (isReady) ? 'none' : '',
-    border: (isReady) ? '2px dotted #665' : '',
+    // border: (isReady) ? '2px dotted #665' : '',
     height: (isReady) ? 'unset' : ''
   };
   const tag_style = {
     background: `rgba(${rgb.r}, ${rgb.g}, ${rgb.b}, ${rgb.a}`
+  };
+  const prompt_style = {
+    color: `rgba(${rgb.r}, ${rgb.g}, ${rgb.b}, ${rgb.a}`
   };
 
   return (
@@ -187,14 +191,21 @@ function CardBuilder() {
       <div {...getRootProps()} className={styles.DropZone} style={dropzone_style}>
         <input {...getInputProps()} />
         {
-          isDragActive ?
-            <span>Drag is lookin' good</span> :
-            <span>Drag Image or Tap Open</span>
+          (x => {
+            let z = null;
+            if (!isReady) {
+              z = (isDragActive) ?
+                <span>Drag is lookin' good</span> :
+                <span>Drag Image or Tap</span>;
+            }
+
+            return z
+          })()
         }
-      </div>
       {
         isReady ? <img src={paths} /> : <span />
       }
+      </div>
       {
         /*
           <div
@@ -212,6 +223,12 @@ function CardBuilder() {
         <span>Built by </span>
         <a href="https://twitter.com/familiarbot">@familiarbot</a>
       </h1>
+      {
+        isReady ? <div className={styles.Prompt} style={prompt_style}>let's raid</div> : null
+      }
+      {
+        isReady ? <div className={styles.ChooseAnother}>or choose another PFP</div> : null
+      }
     </div>
   )
 }

@@ -3,8 +3,8 @@
 .DropZone {
 
   align-items: center;
-  background: rgba(0, 255, 255, 0.07);
-  border: 5px dashed cyan;
+  // background: rgba(0, 255, 255, 0.07);
+  // border: 5px dashed cyan;
   border-radius: 2px;
   display: flex;
   height: 375px;
@@ -12,6 +12,10 @@
   margin-bottom: 20px;
   padding: 28px 15px;
   text-align: center;
+  & > img {
+    margin-bottom: 15px;
+    width: 100%;
+  }
 }
 
 .CardBuilder {
@@ -32,4 +36,15 @@
   cursor: pointer;
   height: 35px;
   width: 35px;
+}
+
+.Prompt {
+  color: cyan;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.ChooseAnother {
+  color: #333;
+  text-align: center;
 }
