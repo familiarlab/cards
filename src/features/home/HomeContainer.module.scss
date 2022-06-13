@@ -2,33 +2,21 @@
 // @import '../cards/Cards.scss';
 
 body {
-  background: $grey_1;
-  color: $white;
   margin: 0;
   padding: 0;
 }
 
-// $highlight: #705885;
-$highlight: cyan;
-
 .HomeContainer {
-  // button, input {
-  //  color: $grey_1;
-  //  padding: 20px;
-  // }
-
-  // img {
-  //  width: 100%
-  // }
-
   h1 {
     background: $highlight;
     bottom: 0;
-    color: $grey_1;
-    font-size: 14px;
-    left: 0;
+    font-size: 12px;
+    left: 50%;
     padding: 7px 14.69px;
     position: fixed;
+    text-align: center;
+    transform: translate(-50%, 0);
+    width: 150px;
 
     span {
       font-weight: 400;
