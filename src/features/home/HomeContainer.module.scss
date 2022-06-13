@@ -1,28 +1,31 @@
 @import '../../sass.config.scss';
 // @import '../cards/Cards.scss';
 
-body {
-  margin: 0;
-  padding: 0;
-}
-
 .HomeContainer {
+  height: 100vh;
+  position: relative;
+  width: 100%;
+  main {
+  display: flex;
+  flex-flow: column;
+  height: 100%;
+  }
   h1 {
     background: $highlight;
-    bottom: 0;
-    font-size: 12px;
+    bottom: 10px;
+    border-radius: 8px;
+    color: $black;
+    font-size: 11px;
     left: 50%;
-    padding: 7px 14.69px;
+    padding: 8px 38px;
     position: fixed;
     text-align: center;
     transform: translate(-50%, 0);
-    width: 150px;
-
     span {
       font-weight: 400;
     }
     a {
-      color: $grey_1;
+      color: $black;
       font-weight: 700;
       margin-left: 3px;
       text-decoration: none;

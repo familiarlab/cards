@@ -4,26 +4,17 @@ import {
   Routes,
   Route
 } from 'react-router-dom';
-import logo from './logo.svg';
-import './App.scss';
+import styles from './App.module.scss';
 
 import { Home } from './views/Home';
 
-// declare global {
-//   interface Window {
-//     familiarbots?: object;
-//   }
-// }
-
-// window.familiarbots = {bee: []};
-
 function App() {
   return (
-    <>
+    <div className={styles.App}>
       <Routes>
         <Route path='/' element={<Home />} />
       </Routes>
-    </>
+    </div>
   );
 }
 

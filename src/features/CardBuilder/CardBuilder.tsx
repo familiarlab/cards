@@ -13,9 +13,7 @@ function generate_card(file: any, image: any) {
   const filename = file.path.split('.')[0];
   const messages = [
     ['Adopt a lost boy,', 'Keep him forever'],
-    // ['123456789123456789'], // 19
-    ['STILL LOST', 'GOT NO LISTINGS'],
-    ['GET LOST','(with us)']
+    ['STILL LOST', 'GOT NO LISTINGS']
   ];
   const hashtag = [
     '#WAGBOY'
@@ -174,37 +172,39 @@ function CardBuilder() {
     backgroundColor: (highlight.length > 0) ? highlight : ''
   };
   const dropzone_style = {
-    // border: `5px solid rgba(${rgb.r}, ${rgb.g}, ${rgb.b}, ${rgb.a}`
     background: (isReady) ? 'none' : '',
-    // border: (isReady) ? '2px dotted #665' : '',
-    height: (isReady) ? 'unset' : ''
   };
-  const tag_style = {
-    background: `rgba(${rgb.r}, ${rgb.g}, ${rgb.b}, ${rgb.a}`
+  const image_style = {
+    opacity: (isDragActive) ? '30%' : ''
   };
+  const tag_style = {};
+  // const tag_style = {
+  //   background: `rgba(${rgb.r}, ${rgb.g}, ${rgb.b}, ${rgb.a}`
+  // };
   const prompt_style = {
     color: `rgba(${rgb.r}, ${rgb.g}, ${rgb.b}, ${rgb.a}`
   };
-
   return (
     <div className={styles.CardBuilder}>
       <div {...getRootProps()} className={styles.DropZone} style={dropzone_style}>
-        <input {...getInputProps()} />
-        {
-          (x => {
-            let z = null;
-            if (!isReady) {
-              z = (isDragActive) ?
-                <span>Drag is lookin' good</span> :
-                <span>Drag Image or Tap</span>;
-            }
+        <div>
+          <input {...getInputProps()} />
+          {
+            isReady ? <img style={image_style} src={paths} /> : <span />
+          }
+          {
+            (x => {
+              let z = null;
+              if (!isReady) {
+                z = (isDragActive) ?
+                  <span>Drag lookin' good</span> :
+                  <span>Drag Image or Tap</span>;
+              }
 
-            return z
-          })()
+              return z
+            })()
         }
-      {
-        isReady ? <img src={paths} /> : <span />
-      }
+        </div>
       </div>
       {
         /*
@@ -224,10 +224,10 @@ function CardBuilder() {
         <a href="https://twitter.com/familiarbot">@familiarbot</a>
       </h1>
       {
-        isReady ? <div className={styles.Prompt} style={prompt_style}>let's raid</div> : null
+        //isReady ? <div className={styles.Prompt} style={prompt_style}>let's raid</div> : null
       }
       {
-        isReady ? <div className={styles.ChooseAnother}>or choose another PFP</div> : null
+        //isReady ? <div className={styles.ChooseAnother}>or choose another PFP</div> : null
       }
     </div>
   )
