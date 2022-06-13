@@ -120,9 +120,12 @@ function CardBuilder() {
   const [rgb, setRgb] = useState({ r: 0, g: 255, b: 255, a: 1 });
   const [color, setColor] = useState({ r: rgb.r, g: rgb.g, b: rgb.b, a: rgb.a });
   const [showPicker, setShowPicker] = useState(false);
+  const [file, setFile] = useState({});
 
   const onDrop = useCallback((acceptedFiles: any) => {
     const file = acceptedFiles[0];
+
+    setFile(file);
 
     const handle_async = async function() {
       let my_font_black = new FontFace('GothicA1Black', 'url(./Gothic_A1/GothicA1-Black.ttf)');
@@ -203,7 +206,16 @@ function CardBuilder() {
 
               return z
             })()
-        }
+          }
+          {
+            isReady ? <div className={styles.ButtonContainer}>
+                        <button>A</button>
+                        <button>B</button>
+                        <button>C</button>
+                        <button>D</button>
+                        <button>E</button>
+                      </div> : null
+          }
         </div>
       </div>
       {

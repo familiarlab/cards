@@ -14,7 +14,6 @@
 
 .DropZone {
   align-items: center;
-  // border: 1px solid yellow;
   border-radius: 2px;
   display: flex;
   text-align: center;
@@ -51,4 +50,34 @@
   color: #333;
   // margin-bottom: 200px;
   text-align: center;
+}
+
+.ButtonContainer {
+  margin-top: 20px;
+  button {
+    color: $highlight;
+    background: none;
+    border: 3px solid $highlight;
+    border-radius: 10px;
+    display: block;
+    font-size: 25px;
+    font-weight: 600;
+    margin: 0 auto;
+    margin-bottom: 12px;
+    padding: 8px 5%;
+    width: 50%;
+
+    @media screen and (min-width: 850px) {
+      display: inline-block;
+      margin-right: 8px;
+      width: unset;
+      &:last-of-type {
+        margin-right: unset;
+      }
+    }
+
+    @media screen and (min-width: 1120px) {
+      margin-right: 18px;
+    }
+  }
 }
