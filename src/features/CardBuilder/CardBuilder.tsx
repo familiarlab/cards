@@ -228,7 +228,7 @@ function CardBuilder() {
                   e.preventDefault();
                   setMessage(messages[i]);
                 }} key={i}>
-                  {i}
+                  {i + 1}
                 </button>
               );
             }) : null
