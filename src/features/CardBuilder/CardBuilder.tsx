@@ -1,5 +1,5 @@
 
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { useDropzone } from 'react-dropzone';
 import { createCanvas, loadImage } from 'canvas';
 // import { RgbaColorPicker } from 'react-colorful';
@@ -9,19 +9,20 @@ import model from './model/1444-LOST-FOREVER-TWITTER.png';
 
 import GetColor from './GetColor';
 
-function generate_card(file: any, image: any) {
+const messages = [
+  ['Adopt a lost boy,', 'Keep him forever'],
+  ['STILL LOST', 'GOT NO LISTINGS']
+];
+const hashtag = [
+  '#WAGBOY'
+];
+const links = [
+  ['Magic Eden', 'LOSTBOYCLUB'],
+  ['Twitter', 'LOSTBOY_CLUB']
+];
+
+function generate_card(file: any, image: any, message: any) {
   const filename = file.path.split('.')[0];
-  const messages = [
-    ['Adopt a lost boy,', 'Keep him forever'],
-    ['STILL LOST', 'GOT NO LISTINGS']
-  ];
-  const hashtag = [
-    '#WAGBOY'
-  ];
-  const links = [
-    ['Magic Eden', 'LOSTBOYCLUB'],
-    ['Twitter', 'LOSTBOY_CLUB']
-  ];
 
   const multiplier = 3;
 
@@ -67,7 +68,7 @@ function generate_card(file: any, image: any) {
 
   let cursor = 1;
 
-  const lines_length = messages[1].length;
+  const lines_length = message.length;
   const font_height_reducer = 15;
 
   const leading = font_size / 3 + font_height_reducer;
@@ -75,7 +76,7 @@ function generate_card(file: any, image: any) {
 
   for (let i = 1; i <= lines_length; i++) {
     const height = (i == 1) ? line_height * cursor : line_height * cursor + leading;
-    ctx_text.fillText(messages[1][i - 1], canvas_text_width / 2, height);
+    ctx_text.fillText(message[i - 1], canvas_text_width / 2, height);
     cursor ++;
   }
 
@@ -120,55 +121,69 @@ function CardBuilder() {
   const [rgb, setRgb] = useState({ r: 0, g: 255, b: 255, a: 1 });
   const [color, setColor] = useState({ r: rgb.r, g: rgb.g, b: rgb.b, a: rgb.a });
   const [showPicker, setShowPicker] = useState(false);
-  const [file, setFile] = useState({});
+  const [file, setFile] = useState(null);
+  const [message, setMessage] = useState(messages[0]);
+
+  const handle_file = async function(file: any, message: any) {
+    if (!file) {
+      return null;
+    }
+    let my_font_black = new FontFace('GothicA1Black', 'url(./Gothic_A1/GothicA1-Black.ttf)');
+    let my_font_bold = new FontFace('GothicA1Bold', 'url(./Gothic_A1/GothicA1-Bold.ttf)');
+    const font_black = await my_font_black.load();
+    const font_bold = await my_font_bold.load();
+    document.fonts.add(font_black);
+    document.fonts.add(font_bold);
+
+    const image = await loadImage(URL.createObjectURL(file));
+    const canvas = createCanvas(1, 1);
+    const context = canvas.getContext('2d');
+    context.drawImage(image, 0, 0, 488, 488);
+    const color = context.getImageData(0, 0, 1, 1).data;
+    let r = color[0];
+    let g = color[1];
+    let b = color[2];
+    let a = 1;
+    const dominant_color = `rgba(${r}, ${g}, ${b})`;
+    const light_or_dark = GetColor.light_dark(dominant_color);
+    let highlight = dominant_color;
+    if (light_or_dark == 'light') {
+      const darken = 25;
+      const boost_saturation = 0.75;
+      const sat = GetColor.saturation([r - darken, g - darken, b - darken], boost_saturation);
+      r = sat[0];
+      g = sat[1];
+      b = sat[2];
+      a = 1;
+      highlight = `rgba(${r}, ${g}, ${b})`;
+    }
+    setRgb({ r, g, b, a });
+    setHighlight(highlight);
+    file.highlight = highlight;
+
+    setPaths(generate_card(file, image, message));
+  };
+
+  // Prepare Dropzone
 
   const onDrop = useCallback((acceptedFiles: any) => {
     const file = acceptedFiles[0];
-
     setFile(file);
+  }, [file]);
 
-    const handle_async = async function() {
-      let my_font_black = new FontFace('GothicA1Black', 'url(./Gothic_A1/GothicA1-Black.ttf)');
-      let my_font_bold = new FontFace('GothicA1Bold', 'url(./Gothic_A1/GothicA1-Bold.ttf)');
-      const font_black = await my_font_black.load();
-      const font_bold = await my_font_bold.load();
-      document.fonts.add(font_black);
-      document.fonts.add(font_bold);
+  const {getRootProps, getInputProps, isDragActive} = useDropzone({
+    onDrop
+  });
 
-      // experimental
-      const image = await loadImage(URL.createObjectURL(file));
-      const canvas = createCanvas(1, 1);
-      const context = canvas.getContext('2d');
-      context.drawImage(image, 0, 0, 488, 488);
-      const color = context.getImageData(0, 0, 1, 1).data;
-      let r = color[0];
-      let g = color[1];
-      let b = color[2];
-      let a = 1;
-      const dominant_color = `rgba(${r}, ${g}, ${b})`;
-      const light_or_dark = GetColor.light_dark(dominant_color);
-      let highlight = dominant_color;
-      if (light_or_dark == 'light') {
-        const darken = 25;
-        const boost_saturation = 0.75;
-        const sat = GetColor.saturation([r - darken, g - darken, b - darken], boost_saturation);
-        r = sat[0];
-        g = sat[1];
-        b = sat[2];
-        a = 1;
-        highlight = `rgba(${r}, ${g}, ${b})`;
-      }
-      setRgb({ r, g, b, a });
-      setHighlight(highlight);
-      file.highlight = highlight;
+  // Watch for changes; regenerate
 
-      setPaths(generate_card(file, image));
-    };
+  useEffect(() => {
+    handle_file(file, message)
+  }, [file, message]);
 
-    handle_async();
-  }, [setPaths, showPicker]);
 
-  const {getRootProps, getInputProps, isDragActive} = useDropzone({onDrop});
+  // Handle template changes
+
   const isReady = (paths.length > 0);
 
   const color_button_style = {
@@ -187,6 +202,7 @@ function CardBuilder() {
   const prompt_style = {
     color: `rgba(${rgb.r}, ${rgb.g}, ${rgb.b}, ${rgb.a}`
   };
+
   return (
     <div className={styles.CardBuilder}>
       <div {...getRootProps()} className={styles.DropZone} style={dropzone_style}>
@@ -207,15 +223,21 @@ function CardBuilder() {
               return z
             })()
           }
+          <div className={styles.ButtonContainer}>
           {
-            isReady ? <div className={styles.ButtonContainer}>
-                        <button>A</button>
-                        <button>B</button>
-                        <button>C</button>
-                        <button>D</button>
-                        <button>E</button>
-                      </div> : null
+            isReady ? messages.map((x, i) => {
+              return (
+                <button onClick={(e: React.ChangeEvent<any>) => {
+                  e.stopPropagation();
+                  e.preventDefault();
+                  setMessage(messages[i]);
+                }} key={i}>
+                  {i}
+                </button>
+              );
+            }) : null
           }
+          </div>
         </div>
       </div>
       {
