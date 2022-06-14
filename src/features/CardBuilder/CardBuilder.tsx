@@ -2,24 +2,20 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { useDropzone } from 'react-dropzone';
 import { createCanvas, loadImage } from 'canvas';
-// import { RgbaColorPicker } from 'react-colorful';
 
+import data from '../../data/opendata.json';
 import styles from './CardBuilder.module.scss';
-import model from './model/1444-LOST-FOREVER-TWITTER.png';
 
 import GetColor from './GetColor';
 
-const messages = [
-  ['Adopt a lost boy,', 'Keep him forever'],
-  ['STILL LOST', 'GOT NO LISTINGS']
-];
-const hashtag = [
-  '#WAGBOY'
-];
-const links = [
-  ['Magic Eden', 'LOSTBOYCLUB'],
-  ['Twitter', 'LOSTBOY_CLUB']
-];
+const domain = window.location.hostname.split('.')[0];
+const project = (domain === 'localhost') ? 'lostboyclub' : domain;
+const project_data = data.filter(x => {
+  return x.key === project
+});
+const messages = project_data[0].messages;
+const hashtags = project_data[0].hashtags;
+const links = project_data[0].links;
 
 function generate_card(file: any, image: any, message: any) {
   const filename = file.path.split('.')[0];
@@ -80,9 +76,9 @@ function generate_card(file: any, image: any, message: any) {
     cursor ++;
   }
 
-  // Make Hashtag
+  // Make hashtags
   ctx_text.font = `${font_size * 0.7}px GothicA1Bold`;
-  ctx_text.fillText(hashtag[0], canvas_text_width / 2, (font_size * 4) + leading);
+  ctx_text.fillText(hashtags[0], canvas_text_width / 2, (font_size * 4) + leading);
 
   // Make Links
   const link_1_x = canvas_text_width / 2 - (canvas_text_width / 4);
