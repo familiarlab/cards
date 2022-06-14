@@ -236,29 +236,10 @@ function CardBuilder() {
           </div>
         </div>
       </div>
-      {
-        /*
-          <div
-            className={styles.ColorButton}
-            onClick={() => {
-              setShowPicker(!showPicker)
-            }}
-            style={color_button_style} />
-        */
-      }
-      {
-        // (showPicker) ? <RgbaColorPicker color={color} onChange={setColor} /> : null
-      }
       <h1 style={tag_style}>
         <span>Built by </span>
         <a href="https://twitter.com/familiarbot">@familiarbot</a>
       </h1>
-      {
-        //isReady ? <div className={styles.Prompt} style={prompt_style}>let's raid</div> : null
-      }
-      {
-        //isReady ? <div className={styles.ChooseAnother}>or choose another PFP</div> : null
-      }
     </div>
   )
 }
