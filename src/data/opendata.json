@@ -1,19 +1,19 @@
 [
-	{
-		"key": "lostboyclub",
-		"messages": [
-			["Adopt a lost boy,", "Keep him forever"],
-			["STILL LOST", "GOT NO LISTINGS"],
-			["Most fitting PFP", "for a bear market"],
-			["Hey!", "#GETLOST"],
-			["Come with us", "#GETLOST"]
-		],
-		"hashtags": [
-			"#WAGBOY"
-		],
-		"links": [
-		  ["Magic Eden", "LOSTBOYCLUB"],
-		  ["Twitter", "LOSTBOY_CLUB"]
-		]
-	}
+  {
+    "key": "lostboyclub",
+    "messages": [
+      ["Adopt a lost boy,", "Keep him forever"],
+      ["STILL LOST", "GOT NO LISTINGS"],
+      ["Most fitting PFP", "for a bear market"],
+      ["Hey!", "#GETLOST"],
+      ["Come with us", "#GETLOST"]
+    ],
+    "hashtags": [
+      "#WAGBOY"
+    ],
+    "links": [
+      ["Magic Eden", "LOSTBOYCLUB"],
+      ["Twitter", "LOSTBOY_CLUB"]
+    ]
+  }
 ]
