@@ -15,5 +15,24 @@
       ["Magic Eden", "LOSTBOYCLUB"],
       ["Twitter", "LOSTBOY_CLUB"]
     ]
+  },
+  {
+    "key": "gothicdegens" ,
+    "messages" : [
+      ["Red" , "Chip"],
+      ["Gothic" , "Degens"],
+      ["Red Skull" , "Society"] ,
+      ["Sun Face" , "DAO"] ,
+      ["Ogre" , "DAO"],
+      ["Rising Sun" , "Society"],
+      ["Guardian" , "Guild"]
+    ],
+    "hashtags": [
+      "#gothicdegens"
+    ],
+    "links": [
+      ["Magic Eden" , "gothic_degens"],
+      ["Twitter", "gothicdegens"]
+    ]
   }
 ]
