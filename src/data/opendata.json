@@ -1,5 +1,43 @@
 [
   {
+    "key": "degods",
+    "messages": [
+      ["Fuck It," , "We Ball"],
+      ["Frank" , "Is Typing..."],
+      ["In Frank" , "We Trust"],
+      ["Doing A" , "Shoey"],
+      ["Because Frunk" , "Told Me To"],
+      ["Learned some shit" , "Trying some new shit"],
+      ["See You In" , "Solympus"]
+    ],
+    "hashtags": [
+      "#DeGods"
+    ],
+    "links": [
+      ["Magic Eden", "degods"],
+      ["Twitter", "degodsnft"]
+    ]
+  },
+  {
+    "key": "gothicdegens" ,
+    "messages" : [
+      ["Red" , "Chip"],
+      ["Gothic" , "Degens"],
+      ["Red Skull" , "Society"] ,
+      ["Sun Face" , "DAO"] ,
+      ["Shrek", "DAO"],
+      ["Suffering" , "Society"],
+      ["Guardian" , "Guild"]
+    ],
+    "hashtags": [
+      "#gothicdegens"
+    ],
+    "links": [
+      ["Magic Eden" , "gothic_degens"],
+      ["Twitter", "gothicdegens"]
+    ]
+  },
+  {
     "key": "lostboyclub",
     "messages": [
       ["Adopt a lost boy,", "Keep him forever"],
@@ -14,25 +52,6 @@
     "links": [
       ["Magic Eden", "LOSTBOYCLUB"],
       ["Twitter", "LOSTBOY_CLUB"]
-    ]
-  },
-  {
-    "key": "gothicdegens" ,
-    "messages" : [
-      ["Red" , "Chip"],
-      ["Gothic" , "Degens"],
-      ["Red Skull" , "Society"] ,
-      ["Sun Face" , "DAO"] ,
-      ["Shrek" , "DAO"],
-      ["Suffering" , "Society"],
-      ["Guardian" , "Guild"]
-    ],
-    "hashtags": [
-      "#gothicdegens"
-    ],
-    "links": [
-      ["Magic Eden" , "gothic_degens"],
-      ["Twitter", "gothicdegens"]
     ]
   }
 ]
