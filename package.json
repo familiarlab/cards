@@ -4,6 +4,11 @@
   "private": true,
   "dependencies": {
     "@reduxjs/toolkit": "^1.8.2",
+    "@solana/wallet-adapter-base": "^0.9.5",
+    "@solana/wallet-adapter-react": "^0.15.5",
+    "@solana/wallet-adapter-react-ui": "^0.9.7",
+    "@solana/wallet-adapter-wallets": "^0.16.1",
+    "@solana/web3.js": "^1.44.1",
     "@testing-library/react": "^13.0.0",
     "@types/jest": "^27.0.1",
     "@types/node": "^16.7.13",
