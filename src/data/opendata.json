@@ -39,7 +39,7 @@
     "messages": [
       ["WL Mint is LIVE"],
       ["PleAse DoNt RuG", "#herotozero"],
-      ["Bull market heroes", "to bear market zeroes"],
+      ["bull market heroes", "to bear market zeroes"],
       ["The Trifecta,", "Team Community Art"],
       ["pLeAsE dOnT rUg", "SpEnT mY sAvInGs"],
       ["#herotozero"]
@@ -103,6 +103,22 @@
     "links": [
       ["Magic Eden", "SOL S8N"],
       ["Twitter", "Sols8n"]
+    ]
+  },
+  {
+    "key": "unfrgtnorbit",
+    "messages": [
+      ["Wen $Orbs?"],
+      ["Get abducted!"],
+      ["Orbit DAO"],
+      ["Are you Ready Aliens?"]
+    ],
+    "hashtags": [
+      "#OrbitDao"
+    ],
+    "links": [
+      ["Magic Eden", "UnfrgtnOrbit"],
+      ["Twitter", "UnfrgtnOrbit"]
     ]
   }
 ]
