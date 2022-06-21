@@ -78,7 +78,10 @@ function generate_card(file: any, image: any, message: any) {
 
   // Make hashtags
   ctx_text.font = `${font_size * 0.7}px GothicA1Bold`;
-  ctx_text.fillText(hashtags[0], canvas_text_width / 2, (font_size * 4) + leading);
+  ctx_text.fillText(
+    hashtags[0], canvas_text_width / 2,
+    (font_size * 4) + ((message.length === 1) ? 0 : leading)
+  );
 
   // Make Links
   const link_1_x = canvas_text_width / 2 - (canvas_text_width / 4);
@@ -97,7 +100,7 @@ function generate_card(file: any, image: any, message: any) {
 
   // Paste Text
   const center_text_x = (column_two_x + (base_width - column_two_x) / 2) - (canvas_text_width / 2);
-  const center_text_y = (base_height / 2) - (canvas_text_height / 2);
+  const center_text_y = (base_height / 2) - (canvas_text_height / 2) + ((message.length === 1) ? leading : 0);
 
   ctx.drawImage(canvas_text, center_text_x, center_text_y, canvas_text_width, canvas_text_height);
 
