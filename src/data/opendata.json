@@ -91,6 +91,23 @@
     ]
   },
   {
+    "key": "mushroomhead",
+    "messages": [
+      ["Trippin' on Sol", "Come join us."],
+      ["A couple of shrooms", "never hurt anyone..."],
+      ["The next GKD", "is upon us."],
+      ["Organic", "Growth"],
+      ["MushroomHead DAO", "Trippy Kit"]
+    ],
+    "hashtags": [
+      "#MushroomHeadDAO"
+    ],
+    "links": [
+      ["Magic Eden", "mhdao"],
+      ["Twitter", "MushroomHeadDAO"]
+    ]
+  },
+  {
     "key": "sols8n",
     "messages": [
       ["Fuck off and go sweep"],
